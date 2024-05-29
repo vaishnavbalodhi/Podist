@@ -12,7 +12,7 @@ export default {
           blue: '#18b2de',
           white: '#fff',
           grey: '#d7d7d7',
-          puple_grey: '#8f8297',
+          puple_grey: '#8f8297', 
         }
       },
     },
