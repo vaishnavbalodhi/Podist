@@ -4,16 +4,19 @@ import Profile from "./pages/Profile"
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth, db } from "./firebase";
 import { doc, onSnapshot } from "firebase/firestore";
 import { setUser } from "./feature/user/userSlice";
 import PrivateRoutes from "./components/PrivateRoutes";
+import CreatePodcast from "./pages/CreatePodcast";
+import Podcasts from "./pages/Podcasts";
 
 function App() {
 
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.user);
 
   useEffect(() => {
     const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
@@ -23,7 +26,7 @@ function App() {
           (userDoc) => {
             if (userDoc.exists()) {
               const userData = userDoc.data();
-              console.log(userData);
+              // console.log(userData);
               dispatch(
                 setUser({
                   name: userData.name,
@@ -58,6 +61,8 @@ function App() {
           <Route path="/" element={<SignUp/>} />
           <Route element={<PrivateRoutes />}> 
             <Route path="/profile" element={<Profile/>} />
+            <Route path="/create-a-podcast" element={<CreatePodcast/>} />
+            <Route path="/podcasts" element={<Podcasts/>} />
           </Route>
         </Routes>
       </BrowserRouter>

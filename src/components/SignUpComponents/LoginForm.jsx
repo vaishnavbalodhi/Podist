@@ -39,7 +39,7 @@ const LoginForm = () => {
                 
                 setLoading(false);
                 toast.success("Login successful!");
-                navigate("/profile");
+                navigate("/profile", { replace: true });
             }
             catch (e) {
                 console.log(e);

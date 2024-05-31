@@ -6,11 +6,12 @@ const PrivateRoutes = () => {
   const [user, loading, error] = useAuthState(auth);
 
   if (loading) {
-    return <Loader />;
+    return <p>Loading...</p>;
   } else if (!user || error) {
     return <Navigate to="/" replace />;
   } else {
     return <Outlet />;
+    //  the Outlet component renders the corresponding child route's component within the parent route's layout.
   }
 };
 
