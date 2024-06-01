@@ -1,5 +1,5 @@
 import Header from "../components/Header/Header"
-import CreatePodcastForm from "../components/StartAPodcast/CreatePodcastForm";
+import CreatePodcastForm from "../components/Podcasts/CreatePodcastForm";
 
 const CreatePodcast = () => {
     return (

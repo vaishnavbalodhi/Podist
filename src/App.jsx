@@ -12,6 +12,8 @@ import { setUser } from "./feature/user/userSlice";
 import PrivateRoutes from "./components/PrivateRoutes";
 import CreatePodcast from "./pages/CreatePodcast";
 import Podcasts from "./pages/Podcasts";
+import PodcastDetails from "./pages/PodcastDetails";
+import CreateEpisode from "./pages/CreateEpisode";
 
 function App() {
 
@@ -63,6 +65,8 @@ function App() {
             <Route path="/profile" element={<Profile/>} />
             <Route path="/create-a-podcast" element={<CreatePodcast/>} />
             <Route path="/podcasts" element={<Podcasts/>} />
+            <Route path="/podcast/:id" element={<PodcastDetails/>} />
+            <Route path="/podcast/:id/create-episode" element={<CreateEpisode/>} />
           </Route>
         </Routes>
       </BrowserRouter>

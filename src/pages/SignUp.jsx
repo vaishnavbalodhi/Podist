@@ -15,13 +15,13 @@ const SignUp = () => {
             {!flag ? (
               <p 
                 onClick={() => setFlag(!flag)}
-                className="cursor-pointer">
+                className="cursor-pointer mt-8">
                   Already have an account? Click here to Login.
               </p>
             ):
             <p 
               onClick={() => setFlag(!flag)}
-              className="cursor-pointer">
+              className="cursor-pointer mt-8">
                 Don't have an account? Click here to SignUp.
             </p>
             }

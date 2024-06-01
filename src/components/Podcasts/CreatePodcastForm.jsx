@@ -13,8 +13,8 @@ const CreatePodcastForm = () => {
 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [displayImage, setDisplayImage] = useState("");
-    const [bannerImage, setBannerImage] = useState("");
+    const [displayImage, setDisplayImage] = useState();
+    const [bannerImage, setBannerImage] = useState();
 
     const [loading, setLoading] = useState(false);
 
