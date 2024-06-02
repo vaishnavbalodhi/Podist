@@ -53,7 +53,7 @@ const Podcasts = () => {
             </div>
             {filteredPodcasts.length > 0 ? (
                 <div className="flex justify-center items-center">
-                    <div className="mx-2 grid sm:grid-cols-3 grid-cols-2">
+                    <div className="mx-2 grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2">
                         {filteredPodcasts.map((item) => (
                             <PodcastCard
                                 key={item.id}

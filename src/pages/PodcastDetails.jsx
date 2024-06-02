@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { auth, db } from "../firebase";
 import Button from "../components/Button/Button";
 import EpisodeDetails from "../components/Podcasts/EpisodeDetails";
+import AudioPlayer from "../components/Podcasts/AudioPlayer";
 
 const PodcastDetails = () => {
 
@@ -14,7 +15,7 @@ const PodcastDetails = () => {
   const { id } = useParams();
   const [podcast, setPodcast] = useState({});
   const [episodes, setEpisodes] = useState([]);
-  const [playingFile, setPlayingFile] = useState();
+  const [playingFile, setPlayingFile] = useState("");
 
   useEffect(() => {
     if (id) {
@@ -61,12 +62,23 @@ const PodcastDetails = () => {
     };
   }, [id]);
 
+  const handleAudioFile = (file) => {
+    setPlayingFile(file);
+  }
+
+  // useEffect(() => {
+
+  //   return () => handleAudioFile();
+
+  // }, [])
+
+
   return (
     <div>
       <Header />
       {podcast.id && (
         <div>
-          <div className="absolute w-3/4 left-1/2 -translate-x-1/2 mt-8 mb-2 rounded-t-xl shadow-2xl shadow-[#2b0d3c]">
+          <div className="absolute lg:w-2/3 sm:w-3/4 w-5/6 left-1/2 -translate-x-1/2 mt-8 mb-2 pb-16 rounded-xl shadow-2xl shadow-[#2b0d3c]">
             <div className="relative w-full overflow-hidden">
               <img
                 className="w-full h-72 rounded-t-xl object-cover"
@@ -95,7 +107,7 @@ const PodcastDetails = () => {
                     title={episode.title}
                     description={episode.description}
                     audioFile={episode.audioFile}
-                    onClick={(file) => setPlayingFile(file)}
+                    onClick={handleAudioFile}
                   />
                 ) )}
               </div>
@@ -105,6 +117,12 @@ const PodcastDetails = () => {
           </div>
         </div>
       )}
+      {playingFile && 
+        <AudioPlayer 
+          key={playingFile}
+          audioSrc={playingFile}
+          image={podcast.displayImage}
+        />}
     </div>
   )
 }
